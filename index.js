@@ -4,16 +4,21 @@ var clamp       = require('clamp');
 var assign      = require('object-assign');
 var randomFloat = require('random-floating');
 
+var MAX = 8488;
+var MIN = 0;
+
 module.exports = function (options) {
 
   options = assign({
     fixed: 5,
-    min: 0,
-    max: 8848
+    min: MIN,
+    max: MAX
   }, options);
 
-  options.min = clamp(options.min, 0, 8488);
-  options.max = clamp(options.max, 0, 8488);
+  options.min = clamp(options.min, MIN, MAX);
+  options.max = clamp(options.max, MIN, MAX);
+
+  options.inspected = true;
 
   return randomFloat(options);
 };
